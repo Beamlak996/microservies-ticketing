@@ -1,13 +1,12 @@
 import express from "express"
-import { json } from "body-parser"
+import { router } from "./routes/routes"
 
 const app = express()
 
-app.use(json())
+app.use(express.json())
 
-app.get('/api/users/currentuser', (req, res) => {
-    res.send('Hi there')
-})
+
+app.use("/api/users", router)
 
 app.listen(3000, () => {
     console.log("Listening to port 3000!!!!!!")
